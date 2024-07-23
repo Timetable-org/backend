@@ -6,16 +6,24 @@
   "author": "Vovchanchyk <oberigfast@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "lint": "eslint ."
   },
   "dependencies": {
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.7.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.11",
+    "eslint": "9.x",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.8.0",
     "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.17.0"
   }
 }
