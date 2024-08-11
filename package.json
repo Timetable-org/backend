@@ -6,17 +6,25 @@
   "author": "Vovchanchyk <oberigfast@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "dotenv -e environments/.env.local nodemon src/index.ts",
     "lint": "eslint .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "services:up": "docker-compose --env-file ./environments/.env.local --profile development up -d",
+    "services:down": "docker-compose --env-file ./environments/.env.local --profile development down",
+    
+    "migration:create": "dotenv -e ./environments/.env.local -- npx prisma migrate dev --create-only",
+    "migration:run": "dotenv -e ./environments/.env.local -- prisma migrate dev",
+    "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "5.18.0",
     "express": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.7.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.11",
+    "dotenv-cli": "^7.4.2",
     "eslint": "9.x",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -25,6 +33,7 @@
     "lint-staged": "^15.2.7",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.3",
+    "prisma": "^5.18.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^7.17.0"

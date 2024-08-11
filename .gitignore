@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 /dist
+/environments
 
 # Editor directories and files
 .vscode/*
@@ -12,3 +13,5 @@
 *.njsproj
 *.sln
 *.sw?
+
+yarn-error.log
