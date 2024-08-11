@@ -18,12 +18,12 @@ model User {
   id      Int      @id @default(autoincrement())
   email   String  
   name    String
-  event   Event?
+  event   Event[]
 }
 
 model Event {
   id      Int      @id @default(autoincrement())
   name String
-  userId  Int      @unique  
+  userId  Int       
   user    User     @relation(fields: [userId], references: [id])
 }
