@@ -16,3 +16,5 @@ export class UserService {
     return this.userRepository.createUser(userData);
   }
 }
+
+export const userService = new UserService();
