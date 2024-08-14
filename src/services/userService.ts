@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export class UserService {
+class UserService {
   getUsers() {
     return prisma.user.findMany();
   }
@@ -21,3 +21,5 @@ export class UserService {
     });
   }
 }
+
+export const userService = new UserService();
