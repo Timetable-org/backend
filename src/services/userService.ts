@@ -1,25 +1,18 @@
-import { PrismaClient } from '@prisma/client';
+import { ICreateUser, IUser } from '../types/IUser';
+import { IUserRepository } from '../repositories/user/IUserRepository';
 
-const prisma = new PrismaClient();
+export class UserService {
+  constructor(private userRepository: IUserRepository) {}
 
-class UserService {
-  getUsers() {
-    return prisma.user.findMany();
+  async getUsers(): Promise<IUser[]> {
+    return this.userRepository.getUsers();
   }
 
-  getUser(id: number) {
-    return prisma.user.findUnique({
-      where: {
-        id,
-      },
-    });
+  async getUser(id: number): Promise<IUser | null> {
+    return this.userRepository.getUser(id);
   }
 
-  createUser(name: string, email: string) {
-    return prisma.user.create({
-      data: { name, email },
-    });
+  async createUser(userData: ICreateUser): Promise<IUser> {
+    return this.userRepository.createUser(userData);
   }
 }
-
-export const userService = new UserService();
