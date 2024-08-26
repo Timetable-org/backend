@@ -15,10 +15,11 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String  
-  name    String
-  event   Event[]
+  id       Int      @id @default(autoincrement())
+  email    String  
+  name     String
+  password String   @default("password")
+  event    Event[]
 }
 
 model Event {
