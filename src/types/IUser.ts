@@ -10,3 +10,5 @@ export interface ICreateUser {
   email: string;
   password: string;
 }
+
+export interface ILoginData extends ICreateUser {}
