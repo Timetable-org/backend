@@ -29,9 +29,9 @@ export class PrismaUserRepository implements IUserRepository {
       },
     });
   }
-  async createUser({ name, email }: ICreateUser): Promise<IUser> {
+  async createUser({ name, email, password }: ICreateUser): Promise<IUser> {
     return await this.repository.create({
-      data: { name, email },
+      data: { name, email, password },
     });
   }
 }

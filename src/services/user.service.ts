@@ -1,5 +1,6 @@
 import { ICreateUser, IUser } from '../types/IUser';
 import { IUserRepository } from '../repositories/user/IUserRepository';
+import { UserRepositoryFactory } from '../repositories/user/UserRepositoryFactory';
 
 export class UserService {
   constructor(private userRepository: IUserRepository) {}
@@ -20,3 +21,5 @@ export class UserService {
     return this.userRepository.createUser(userData);
   }
 }
+
+export const userService = new UserService(UserRepositoryFactory.create());
