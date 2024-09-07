@@ -1,5 +1,6 @@
 import { ICreateUser, IUser } from '../types/IUser';
 import { IUserRepository } from '../repositories/user/IUserRepository';
+import { UserRepositoryFactory } from '../repositories/user/UserRepositoryFactory';
 
 export class UserService {
   constructor(private userRepository: IUserRepository) {}
@@ -12,7 +13,13 @@ export class UserService {
     return this.userRepository.getUser(id);
   }
 
+  async getUserByEmail(email: string): Promise<IUser | null> {
+    return this.userRepository.getUserByEmail(email);
+  }
+
   async createUser(userData: ICreateUser): Promise<IUser> {
     return this.userRepository.createUser(userData);
   }
 }
+
+export const userService = new UserService(UserRepositoryFactory.create());

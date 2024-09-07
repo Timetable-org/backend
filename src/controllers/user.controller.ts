@@ -1,12 +1,5 @@
 import { Request, Response } from 'express';
-import { UserRepositoryFactory } from '../repositories/user/UserRepositoryFactory';
-
-const userService = UserRepositoryFactory.create();
-
-interface CreateUserBody {
-  name: string;
-  email: string;
-}
+import { userService } from '../services';
 
 export const getUsers = async (req: Request, res: Response) => {
   const users = await userService.getUsers();
@@ -22,7 +15,7 @@ export const getUser = async (req: Request, res: Response) => {
 };
 
 export const createUser = async (req: Request, res: Response) => {
-  const { name, email } = <CreateUserBody>req.body;
-  const user = await userService.createUser({ name, email });
+  const { name, email, password } = req.body;
+  const user = await userService.createUser({ name, email, password });
   res.send(user);
 };

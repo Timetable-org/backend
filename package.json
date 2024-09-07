@@ -11,18 +11,23 @@
     "prepare": "husky",
     "services:up": "docker-compose --env-file ./environments/.env.local --profile development up -d",
     "services:down": "docker-compose --env-file ./environments/.env.local --profile development down",
-    
     "migration:create": "dotenv -e ./environments/.env.local -- npx prisma migrate dev --create-only",
     "migration:run": "dotenv -e ./environments/.env.local -- prisma migrate dev",
     "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "5.18.0",
-    "express": "^4.19.2"
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.7.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.11",
     "dotenv-cli": "^7.4.2",
     "eslint": "9.x",
